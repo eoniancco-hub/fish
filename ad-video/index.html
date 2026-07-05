@@ -538,9 +538,12 @@
 
       window.__timelines["generator-repair-ad"] = tl;
 
-      var seek = new URLSearchParams(window.location.search).get("seek");
+      var params = new URLSearchParams(window.location.search);
+      var seek = params.get("seek");
       if (seek !== null) {
         tl.pause(Number(seek));
+      } else if (params.get("preview") === "1") {
+        tl.play(0);
       }
     </script>
   </body>
